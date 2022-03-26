@@ -10,7 +10,10 @@
 	"repository": "https://github.com/barelyhuman/has-match",
 	"funding": "https://github.com/sponsors/mvllow",
 	"license": "MIT",
-	"author": "Reaper <ahoy@barelyhuman.dev>",
+	"author": "mvllow <mvllow@icloud.com>",
+	"contributors": [
+		"Reaper <ahoy@barelyhuman.dev>"
+	],
 	"main": "dist/index.js",
 	"module": "dist/index.mjs",
 	"types": "dist/index.d.ts",
