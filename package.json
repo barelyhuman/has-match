@@ -1,6 +1,6 @@
 {
 	"name": "has-match-curry",
-	"version": "1.0.3",
+	"version": "1.0.4",
 	"description": "Check object value for match",
 	"keywords": [
 		"object",
