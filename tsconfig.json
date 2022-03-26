@@ -1,0 +1,12 @@
+{
+	"compilerOptions": {
+		"allowJs": true,
+		"checkJs": true,
+		"removeComments": true,
+		"esModuleInterop": true,
+		"emitDeclarationOnly": true,
+		"declaration": true,
+		"outDir": "dist",
+		"lib": ["esnext", "dom"]
+	}
+}
