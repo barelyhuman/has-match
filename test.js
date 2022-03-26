@@ -6,28 +6,40 @@ const garden = {
 	plants: ['roses', 'lilies', 'gerberas'],
 }
 
+const asArray = [garden]
+
 test('main', (t) => {
-	t.is(hasMatch({}, 'lilies'), false)
-	t.is(hasMatch(garden, 'pineapple'), false)
+	t.is(hasMatch('lilies', [], {}), false)
+	t.is(hasMatch('pineapple', [], garden), false)
 })
 
 test('match string value', (t) => {
-	t.is(hasMatch(garden, 'sunny fields'), true)
+	t.is(hasMatch('sunny fields', [], garden), true)
 })
 
 test('match string value in array', (t) => {
-	t.is(hasMatch(garden, 'roses'), true)
+	t.is(hasMatch('roses', [], garden), true)
 })
 
 test('partial match string value', (t) => {
-	t.is(hasMatch(garden, 'sun'), true)
+	t.is(hasMatch('sun', [], garden), true)
 })
 
 test('partial match string value in array', (t) => {
-	t.is(hasMatch(garden, 'ger'), true)
+	t.is(hasMatch('ger', [], garden), true)
 })
 
 test('match included keys only', (t) => {
-	t.is(hasMatch(garden, 'sunny fields', ['plants']), false)
-	t.is(hasMatch(garden, 'roses', ['plants']), true)
+	t.is(hasMatch('sunny fields', ['plants'], garden), false)
+	t.is(hasMatch('roses', ['plants'], garden), true)
+})
+
+test('match on array filter', (t) => {
+	t.deepEqual(asArray.filter(hasMatch('sunny fields', ['plants'])), [])
+	t.deepEqual(asArray.filter(hasMatch('roses', ['plants'])), [
+		{
+			name: 'Sunny Fields',
+			plants: ['roses', 'lilies', 'gerberas'],
+		},
+	])
 })

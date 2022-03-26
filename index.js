@@ -1,4 +1,16 @@
-export default function hasMatch(source, search, includeKeys) {
+function createCurry(func) {
+	return function curriedFunc(...args) {
+		if (args.length >= func.length) {
+			return func.apply(this, args)
+		}
+
+		return function (...args2) {
+			return Reflect.apply(curriedFunc, this, [...args, ...args2])
+		}
+	}
+}
+
+function _createHasMatch(search, includeKeys, source) {
 	const normalizedSearch = search.normalize().toLowerCase()
 
 	const result = Object.keys(source).map((key) => {
@@ -33,3 +45,7 @@ export default function hasMatch(source, search, includeKeys) {
 
 	return result.includes(true)
 }
+
+const hasMatch = createCurry(_createHasMatch)
+
+export default hasMatch
